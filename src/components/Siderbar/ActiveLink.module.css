@@ -1,0 +1,23 @@
+@reference "tailwindcss";
+
+
+.link {
+  @apply relative px-4 py-3 flex items-center space-x-4 rounded-xl text-gray-600;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  @apply bg-gray-100;
+}
+
+.link:hover span {
+  @apply text-gray-700;
+}
+
+.active-link {
+  @apply text-white bg-gradient-to-r from-sky-600 to-cyan-400;
+}
+
+.active-link span {
+  @apply text-white;
+}

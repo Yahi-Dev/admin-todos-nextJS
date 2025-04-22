@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Todo {
+  id          String   @id @default(uuid())
+  description String
+  complete    Boolean  @default(false)
+  createAt    DateTime @default(now())
+  updateAt    DateTime @updatedAt
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Employee {
+  id       Int      @id @default(autoincrement())
+  name     String   @db.VarChar
+  lastname String   @db.VarChar
+  isAdmin  Boolean  @default(false)
+  createAt DateTime @default(now()) @db.Timestamp(6)
+  role     String[] @default([])
+}
