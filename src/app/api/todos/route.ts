@@ -45,3 +45,14 @@ export async function POST(request: Request) {
         return NextResponse.json({ message: 'Error en la validación o creación' }, { status: 400 });
     }
 }
+
+
+
+export async function DELETE() { 
+    try {    
+      await prisma.todo.deleteMany({ where: { complete: true } }); 
+      return NextResponse.json({ message: 'Tareas completadas eliminadas' });
+    } catch (error) {
+      return NextResponse.json({ error }, { status: 400 });
+    }
+  }
