@@ -1,8 +1,7 @@
+import { Todo } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server'
 import * as yup from 'yup';
-import { Todo } from '@prisma/client';
-
 
 interface Segments {
     params: {

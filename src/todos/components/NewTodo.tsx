@@ -2,13 +2,15 @@
 
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-import * as todosApi from "@/todos/helpers/todos";
-import { useRouter } from "next/navigation";
+// import * as todosApi from "@/todos/helpers/todos";
+// import { useRouter } from "next/navigation";
+import { addTodo } from "../actions/todo-actions";
+
 
 export const NewTodo = () => {
   const [description, setDescription] = useState("");
 
-  const router = useRouter();
+  // const router = useRouter();
 
   const obSumit = async (e: FormEvent) => {
     e.preventDefault();
@@ -17,18 +19,16 @@ export const NewTodo = () => {
       return;
     }
 
-    const createTodo = await todosApi.createTodo(description);
+    const createTodo = await addTodo(description);
     if (createTodo.description !== "") {
-      console.log({ createTodo });
       setDescription("");
-      router.refresh();
     }
   };
 
   const deleteCompleted = async () => {
-    const deletedTodos = await todosApi.deleteTodosComplete();
-    console.log(deletedTodos);
-    router.refresh();
+    // const deletedTodos = await todosApi.deleteTodosComplete();
+    // console.log(deletedTodos);
+    // router.refresh();
   };
 
   return (
@@ -44,14 +44,14 @@ export const NewTodo = () => {
 
         <button
           type="submit"
-          className="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-all font-medium"
+          className="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-all font-medium cursor-pointer"
         >
           Crear
         </button>
 
         <button
           type="button"
-          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all"
+          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all cursor-pointer"
           aria-label="Eliminar completados"
           title="Eliminar completados"
           onClick={() => deleteCompleted()}
