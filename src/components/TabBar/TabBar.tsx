@@ -1,6 +1,7 @@
 'use client'
 
 import { setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 interface Props {
@@ -10,6 +11,8 @@ interface Props {
 
 export const TabBar = ({ tabOptions = [1, 2, 3, 4, 5], currentTab = 1 }: Props) => {
     const [selectedTab, setSelectedTab] = useState(currentTab);
+
+    const router = useRouter();
 
     // Sincronizar el estado con el valor inicial
     useEffect(() => {
@@ -22,6 +25,7 @@ export const TabBar = ({ tabOptions = [1, 2, 3, 4, 5], currentTab = 1 }: Props) 
             path: '/',
             maxAge: 60 * 60 * 24 * 30 // 30 días
         });
+        router.refresh();
     }
 
     return (

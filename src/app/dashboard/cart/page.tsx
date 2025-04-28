@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { products, type Product } from "@/products/data/products";
 import { ItemCard } from "@/shopping-cart";
+import Link from "next/link";
 
 export const metadata = {
   title: 'Carrito de Compras',
@@ -61,9 +62,9 @@ export default async function CartPage() {
                 <div className="relative z-10">
                   <p className="text-xl font-medium">Tu carrito está vacío</p>
                   <p className="text-white/80 mt-2">Agrega productos para comenzar</p>
-                  <button className="mt-4 bg-white/20 hover:bg-white/30 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                  <Link href='/dashboard/products' className="mt-7 bg-white/20 hover:bg-white/30 text-white px-6 py-2 rounded-lg font-medium transition-colors cursor-pointer">
                     Ver productos
-                  </button>
+                  </Link>
                 </div>
               </div>
             )}
@@ -86,6 +87,10 @@ export default async function CartPage() {
                   <div className="flex justify-between">
                     <span className="text-white/90">Envío</span>
                     <span className="font-medium text-white">$0.00</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/90">Inpuestos: </span>
+                    <span className="font-medium text-white">${(Number(subtotal.toFixed(2)) / 4).toFixed(2)}</span>
                   </div>
                   <div className="border-t border-white/20 pt-4 mt-4">
                     <div className="flex justify-between">
