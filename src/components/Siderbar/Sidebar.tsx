@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IoBrowsersOutline, IoListOutline } from "react-icons/io5";
+import { IoBasketOutline, IoBrowsersOutline, IoDiscOutline, IoListOutline } from "react-icons/io5";
 import { LuListTodo } from "react-icons/lu";
 import { CiLogout } from "react-icons/ci";
 import { SidebarItem } from "./SidebarItem";
@@ -23,6 +23,18 @@ const menuItems = [
     icon: <IoListOutline size={20} />,
     title: "Server Actions",
     subtitle: "Visualizacion",
+  },
+  {
+    path: "/dashboard/cookies",
+    icon: <IoDiscOutline size={20} />,
+    title: "Cookies",
+    subtitle: "Seccion 12",
+  },
+  {
+    path: "/dashboard/products",
+    icon: <IoBasketOutline size={20} />,
+    title: "Products",
+    subtitle: "Our Store",
   },
 ];
 

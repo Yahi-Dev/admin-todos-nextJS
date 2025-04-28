@@ -1,6 +1,22 @@
-import { CiBellOn, CiChat1, CiMenuBurger, CiSearch } from "react-icons/ci";
+import { cookies } from "next/headers";
+import Link from "next/link";
+import { CiChat1, CiMenuBurger, CiSearch, CiShoppingBasket } from "react-icons/ci";
 
-export const TopMenu = () => {
+export const TopMenu = async () => {
+
+  const cookieStore = await cookies();
+  const cart = JSON.parse(cookieStore.get('cart')?.value ?? '{}')
+
+  const getTotalCount = () => {
+    let items = 0;
+    Object.values( cart ).forEach(value => {
+      items+= value as number;
+    })
+
+
+    return items;
+  }
+
   return (
     <div className="px-6 py-4 flex items-center justify-between bg-white shadow-sm border-b border-gray-100">
       {/* Título del Dashboard - ahora más visible */}
@@ -45,18 +61,20 @@ export const TopMenu = () => {
         {/* Botones de acción con mejor visibilidad */}
         <div className="flex space-x-2">
           <button
-            className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors"
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors cursor-pointer"
             aria-label="Chat"
           >
             <CiChat1 size={22} />
           </button>
-          <button
-            className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors relative"
+          <Link
+            href={'/dashboard/cart'}
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors relative cursor-pointer"
             aria-label="Notifications"
           >
-            <CiBellOn size={22} />
+            <span className='text-sm text-red-600 text-bold'>{getTotalCount()}</span>
+            <CiShoppingBasket size={22} />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

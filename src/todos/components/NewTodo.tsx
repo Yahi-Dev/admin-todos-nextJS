@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 // import * as todosApi from "@/todos/helpers/todos";
 // import { useRouter } from "next/navigation";
-import { addTodo } from "../actions/todo-actions";
+import { addTodo, deletedCompleted } from "../actions/todo-actions";
 
 
 export const NewTodo = () => {
@@ -25,11 +25,13 @@ export const NewTodo = () => {
     }
   };
 
-  const deleteCompleted = async () => {
-    // const deletedTodos = await todosApi.deleteTodosComplete();
-    // console.log(deletedTodos);
-    // router.refresh();
-  };
+
+
+  // const deleteCompleted = async () => {
+  //   // const deletedTodos = await todosApi.deleteTodosComplete();
+  //   // console.log(deletedTodos);
+  //   // router.refresh();
+  // };
 
   return (
     <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
@@ -54,7 +56,7 @@ export const NewTodo = () => {
           className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all cursor-pointer"
           aria-label="Eliminar completados"
           title="Eliminar completados"
-          onClick={() => deleteCompleted()}
+          onClick={() => deletedCompleted()}
         >
           <IoTrashOutline className="text-lg" />
           <span className="sr-only md:not-sr-only">Eliminar completados</span>
