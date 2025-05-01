@@ -13,7 +13,8 @@
     "output": "node_modules/.prisma/client"
   },
   "dependencies": {
-    "@prisma/client": "^6.6.0",
+    "@auth/prisma-adapter": "^2.9.0",
+    "@prisma/client": "^6.7.0",
     "cookies-next": "^5.1.0",
     "framer-motion": "^12.9.2",
     "next": "15.3.1",
