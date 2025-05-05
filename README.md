@@ -40,3 +40,8 @@ npx prisma generate
 #Prod
 
 #Stage
+
+## Nota
+
+usuario: test1@google.com
+contraseña: 123456
