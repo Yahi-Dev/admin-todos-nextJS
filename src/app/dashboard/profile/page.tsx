@@ -36,7 +36,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br py-12 px-4 sm:px-6 lg:px-8">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export default function ProfilePage() {
                 <h1 className="text-2xl sm:text-3xl font-bold">
                   {session?.user?.name || 'Usuario'}
                 </h1>
-                <p className="text-indigo-100 mt-1 ml-10">{session?.user?.email}</p>
+                <p className="text-indigo-100 mt-1">{session?.user?.email}</p>
                 <div className="mt-3 flex justify-center sm:justify-start gap-2">
                   <span className="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm text-amber-400 text-bold">
                     Usuario Premium
@@ -112,20 +112,20 @@ export default function ProfilePage() {
               </h2>
 
               <div className="space-y-4">
-                <button className="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition">
+                {/* <button className="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition">
                   <FiUser className="text-gray-600" />
-                  <span>Editar perfil</span>
+                  <span className='text-black'>Editar perfil</span>
                 </button>
 
                 <button className="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition">
                   <FiMail className="text-gray-600" />
-                  <span>Configuración de email</span>
+                  <span className='text-black'>Configuración de email</span>
                 </button>
 
                 <button className="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition">
                   <FiSettings className="text-gray-600" />
-                  <span>Preferencias</span>
-                </button>
+                  <span  className='text-black'>Preferencias</span>
+                </button> */}
 
                 <button className="w-full flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-50 rounded-lg transition mt-8">
                   <FiLogOut className="text-red-500" />

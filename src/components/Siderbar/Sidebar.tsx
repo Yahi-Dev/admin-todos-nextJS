@@ -50,6 +50,8 @@ const menuItems = [
 export const Sidebar = async () => {
 
   const session = await getServerSession(authOptions);
+
+  const userRoles = session?.user?.roles ?? ['client']
   
   if (!session) {
     redirect("/api/auth/signin");
@@ -93,7 +95,7 @@ export const Sidebar = async () => {
           <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">
             {session.user?.name}
           </h5>
-          <span className="hidden text-gray-400 lg:block">Admin</span>
+          <span className="hidden text-gray-400 lg:block">{userRoles}</span>
         </div>
         <ul className="space-y-2 tracking-wide mt-8">
           {menuItems.map((item) => (
