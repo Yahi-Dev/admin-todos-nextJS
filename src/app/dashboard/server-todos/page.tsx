@@ -17,7 +17,7 @@ export default async function ServerTodosPage() {
       id: true,
       description: true,
       complete: true,
-      createAt: true,
+      createdAt: true,
       updateAt: true
     }
   });

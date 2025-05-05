@@ -62,7 +62,7 @@ export const TodoItem = ({ todo, toggleTodo }: Props) => {
       </div>
       
       <span className="text-sm text-gray-400">
-        {todoOptimistic.createAt.toLocaleDateString()}
+        {todoOptimistic.createdAt.toLocaleDateString()}
       </span>
     </div>
   );

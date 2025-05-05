@@ -11,7 +11,7 @@ export default async function RestTodosPage() {
       id: true,
       description: true,
       complete: true,
-      createAt: true,
+      createdAt: true,
       updateAt: true
     }
   });

@@ -12,7 +12,7 @@ model Todo {
   id          String   @id @default(uuid())
   description String
   complete    Boolean  @default(false)
-  createdAt   DateTime @default(now()) @map("createAt") // Fixed field name
+  createdAt   DateTime @default(now()) @map("createdAt") // Fixed field name
   updateAt    DateTime @updatedAt
 }
 
@@ -28,7 +28,7 @@ model Employee {
 
 //NextAuthjs
 model User {
-  id            String          @id @default(cuid())
+  id            String          @id @default(uuid())
   name          String?
   email         String          @unique
   emailVerified DateTime?
@@ -43,6 +43,7 @@ model User {
 }
 
 model Account {
+  id                       String  @default(uuid())
   userId                   String
   type                     String
   provider                 String
@@ -65,6 +66,7 @@ model Account {
 }
 
 model Session {
+  id           String   @default(uuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
