@@ -23,22 +23,36 @@ export const authOptions:NextAuthOptions = {
     }),
     // ...add more providers here
   ],
+
+  session: {
+    strategy: 'jwt'
+  },
+
+  callbacks: {
+    async signIn({user, profile, email, account, credentials}){
+      return true;
+    },
+    async jwt({token, user, account, profile}){
+      const dbUser = await prisma.user.findUnique({where: {email: token.email ?? 'no-email'}});
+
+      token.roles = dbUser?.roles ?? ['no-roles'];
+      token.id = dbUser?.id ?? ['no-uuid'];
+
+      return token;
+    },
+    async session({session, token, user}){
+
+      if(session && session.user){
+        session.user.roles = token.roles;
+        session.user.id = token.id;
+      }
+
+      return session;
+    }
+  }
 }
 
 
 
 const handler = NextAuth(authOptions)
 export { handler as GET, handler as POST }
-
-// export const authOptions = {
-//   // Configure one or more authentication providers
-//   providers: [
-//     GithubProvider({
-//       clientId: process.env.GITHUB_ID ?? '',
-//       clientSecret: process.env.GITHUB_SECRET ?? '',
-//     }),
-//     // ...add more providers here
-//   ],
-// }
-
-// export default NextAuth(authOptions)
